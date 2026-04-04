@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PaddyGuard AI — Paddy Leaf Disease Detection</title>
+  <meta name="description" content="AI-powered paddy leaf disease detection system. Identify Bacterial Leaf Blight, Brown Spot, Leaf Smut and healthy rice leaves instantly.">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<!-- Animated Background -->
+<div class="bg-glow"></div>
+
+<!-- Navbar -->
+<nav class="navbar" id="navbar">
+  <a href="/" class="nav-brand">
+    <span>🌾</span> PaddyGuard AI
+  </a>
+  <ul class="nav-links">
+    <li><a href="/" class="active" id="nav-home">Home</a></li>
+    <li><a href="/upload" id="nav-upload">Detect Disease</a></li>
+  </ul>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero" id="hero-section">
+  <div class="hero-bg">
+    <img src="{{ url_for('static', filename='images/hero_paddy_field.png') }}" alt="Rice paddy field">
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      AI-Powered Detection
+    </div>
+    <h1>Protect Your Paddy Crops with <span class="gradient-text">Intelligent AI</span></h1>
+    <p>Instantly detect paddy leaf diseases using deep learning. Upload a leaf image and get an accurate diagnosis in seconds.</p>
+    <div class="hero-actions">
+      <a href="/upload" class="btn btn-primary" id="hero-cta">
+        🔬 Start Detection
+      </a>
+      <a href="#diseases" class="btn btn-outline" id="hero-learn">
+        📖 Learn About Diseases
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Bar -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-value" id="stat-accuracy">93%</div>
+    <div class="stat-label">Model Accuracy</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">4</div>
+    <div class="stat-label">Disease Classes</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">&lt;3s</div>
+    <div class="stat-label">Detection Speed</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">CNN</div>
+    <div class="stat-label">Deep Learning Model</div>
+  </div>
+</div>
+
+<!-- Disease Information Section -->
+<section class="section" id="diseases">
+  <div class="section-header">
+    <h2>🌿 Paddy Leaf Diseases</h2>
+    <p>Our AI model is trained to identify these common paddy leaf diseases with high accuracy.</p>
+  </div>
+
+  <div class="disease-grid">
+
+    <!-- Bacterial Leaf Blight -->
+    <div class="disease-card" id="card-blb">
+      <div class="disease-card-img-wrap">
+        <img src="{{ url_for('static', filename='images/bacterial_leaf_blight.png') }}" alt="Bacterial Leaf Blight" class="disease-card-img">
+      </div>
+      <div class="disease-card-body">
+        <span class="disease-tag tag-danger">High Severity</span>
+        <h3>Bacterial Leaf Blight</h3>
+        <p>Caused by <em>Xanthomonas oryzae</em>, this bacterial disease causes wilting and yellowing of leaves, significantly reducing rice yield.</p>
+        <ul class="symptoms-list">
+          <li>Water-soaked lesions on leaf margins</li>
+          <li>Yellowing and wilting of leaves</li>
+          <li>Grayish-white lesions with wavy edges</li>
+          <li>Stunted plant growth</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Brown Spot -->
+    <div class="disease-card" id="card-brownspot">
+      <div class="disease-card-img-wrap">
+        <img src="{{ url_for('static', filename='images/brown_spot.png') }}" alt="Brown Spot Disease" class="disease-card-img">
+      </div>
+      <div class="disease-card-body">
+        <span class="disease-tag tag-warning">Medium Severity</span>
+        <h3>Brown Spot</h3>
+        <p>Caused by <em>Bipolaris oryzae</em>, this fungal disease appears as brown oval lesions on leaves, affecting grain quality.</p>
+        <ul class="symptoms-list">
+          <li>Small oval brown lesions on leaves</li>
+          <li>Lesions with gray or white centers</li>
+          <li>Spots may merge to form large patches</li>
+          <li>Infected seeds appear discolored</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Leaf Smut -->
+    <div class="disease-card" id="card-leafsmut">
+      <div class="disease-card-img-wrap">
+        <img src="{{ url_for('static', filename='images/leaf_smut.png') }}" alt="Leaf Smut Disease" class="disease-card-img">
+      </div>
+      <div class="disease-card-body">
+        <span class="disease-tag tag-info">Low Severity</span>
+        <h3>Leaf Smut</h3>
+        <p>Caused by <em>Entyloma oryzae</em>, this fungal disease produces small black spots on leaves but generally has a minor impact on yield.</p>
+        <ul class="symptoms-list">
+          <li>Small angular black spots on leaves</li>
+          <li>Slightly raised fungal sori</li>
+          <li>Spots scattered across the leaf surface</li>
+          <li>Mild leaf distortion in severe cases</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Healthy -->
+    <div class="disease-card" id="card-healthy">
+      <div class="disease-card-img-wrap">
+        <img src="{{ url_for('static', filename='images/healthy_leaf.png') }}" alt="Healthy Rice Leaf" class="disease-card-img">
+      </div>
+      <div class="disease-card-body">
+        <span class="disease-tag tag-success">Healthy</span>
+        <h3>Healthy Leaf</h3>
+        <p>A healthy paddy leaf shows vibrant green color with no visible spots, lesions, or discoloration — indicating a disease-free plant.</p>
+        <ul class="symptoms-list">
+          <li>Uniform green coloration</li>
+          <li>No visible spots or lesions</li>
+          <li>Smooth leaf surface</li>
+          <li>Normal growth and vigor</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- How It Works -->
+<section class="section" id="how-it-works">
+  <div class="section-header">
+    <h2>⚙️ How It Works</h2>
+    <p>Three simple steps to detect paddy leaf diseases using our AI model.</p>
+  </div>
+
+  <div class="steps">
+    <div class="step-card" id="step-upload">
+      <div class="step-num"></div>
+      <div class="step-icon">📷</div>
+      <h3>Upload Image</h3>
+      <p>Take a clear photo of the paddy leaf and upload it through our detection page.</p>
+    </div>
+    <div class="step-card" id="step-analyze">
+      <div class="step-num"></div>
+      <div class="step-icon">🤖</div>
+      <h3>AI Analyzes</h3>
+      <p>Our CNN model processes the image and classifies the disease with high accuracy.</p>
+    </div>
+    <div class="step-card" id="step-result">
+      <div class="step-num"></div>
+      <div class="step-icon">📊</div>
+      <h3>Get Results</h3>
+      <p>Receive instant results with the disease name and confidence score.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section" id="cta-section">
+  <h2>Ready to Detect Diseases?</h2>
+  <p>Upload a paddy leaf image and let our AI identify the disease in seconds.</p>
+  <a href="/upload" class="btn btn-primary" id="cta-detect">🔬 Detect Now</a>
+</section>
+
+<!-- Footer -->
+<footer class="footer" id="footer">
+  <p>© 2026 PaddyGuard AI — Paddy Leaf Disease Detection System</p>
+</footer>
+
+<script>
+// Navbar scroll effect
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Animate stats on scroll
+const statValues = document.querySelectorAll('.stat-value');
+const statsBar = document.querySelector('.stats-bar');
+let statsAnimated = false;
+
+function animateValue(el, end, duration) {
+  const isPercent = end.toString().includes('%');
+  const numericEnd = parseInt(end);
+  if (isNaN(numericEnd)) return;
+  let start = 0;
+  const startTime = performance.now();
+  function update(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = Math.floor(eased * numericEnd);
+    el.textContent = current + (isPercent ? '%' : '');
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !statsAnimated) {
+      statsAnimated = true;
+      animateValue(document.getElementById('stat-accuracy'), '93%', 1500);
+    }
+  });
+}, { threshold: 0.5 });
+
+if (statsBar) observer.observe(statsBar);
+
+// Scroll reveal for disease cards
+const revealElements = document.querySelectorAll('.disease-card, .step-card');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+revealElements.forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(30px)';
+  el.style.transition = 'opacity .6s ease, transform .6s ease';
+  revealObserver.observe(el);
+});
+</script>
+
+</body>
+</html>
