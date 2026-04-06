@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PaddyGuard AI — Paddy Leaf Disease Detection</title>
-  <meta name="description" content="AI-powered paddy leaf disease detection system. Identify Bacterial Leaf Blight, Brown Spot, Leaf Smut and healthy rice leaves instantly.">
+  <meta name="description" content="AI-powered paddy leaf disease detection system. Identify Bacterial Leaf Blight, Brown Spot, Rice Hispa and healthy rice leaves instantly.">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
@@ -111,20 +111,20 @@
       </div>
     </div>
 
-    <!-- Leaf Smut -->
-    <div class="disease-card" id="card-leafsmut">
+    <!-- Rice Hispa -->
+    <div class="disease-card" id="card-hispa">
       <div class="disease-card-img-wrap">
-        <img src="{{ url_for('static', filename='images/leaf_smut.png') }}" alt="Leaf Smut Disease" class="disease-card-img">
+        <img src="{{ url_for('static', filename='images/rice_hispa.png') }}" alt="Rice Hispa Pest" class="disease-card-img">
       </div>
       <div class="disease-card-body">
-        <span class="disease-tag tag-info">Low Severity</span>
-        <h3>Leaf Smut</h3>
-        <p>Caused by <em>Entyloma oryzae</em>, this fungal disease produces small black spots on leaves but generally has a minor impact on yield.</p>
+        <span class="disease-tag tag-danger">Pest Damage</span>
+        <h3>Rice Hispa</h3>
+        <p>Caused by the beetle <em>Dicladispa armigera</em>, this pest scrapes the upper surface of the leaves, resulting in white streaks and severe yield loss.</p>
         <ul class="symptoms-list">
-          <li>Small angular black spots on leaves</li>
-          <li>Slightly raised fungal sori</li>
-          <li>Spots scattered across the leaf surface</li>
-          <li>Mild leaf distortion in severe cases</li>
+          <li>White parallel streaks on leaves</li>
+          <li>Irregular transparent patches</li>
+          <li>Leaves may wither and die</li>
+          <li>Visible spiny beetles on leaves</li>
         </ul>
       </div>
     </div>

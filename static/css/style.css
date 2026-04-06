@@ -614,6 +614,41 @@ img { max-width: 100%; display: block; }
   border-color: rgba(74,222,128,0.4);
 }
 
+/* Treatment Box / Recommended Action */
+.treatment-box {
+  margin-top: 24px;
+  background: rgba(74,222,128,0.06);
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+  padding: 16px 20px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  animation: fadeUp .8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: 0.2s; /* delays slightly after card entry */
+}
+.treatment-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+  background: rgba(255,255,255,0.05);
+  padding: 8px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 10px rgba(74,222,128,0.2);
+}
+.treatment-content h4 {
+  color: var(--accent);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+.treatment-content p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 768px) {
   .navbar { padding: 12px 18px; }

@@ -71,6 +71,17 @@
             <div class="confidence-fill" style="width: {{ confidence }}%;"></div>
           </div>
         </div>
+        
+        {% if treatment %}
+        <div class="treatment-box">
+          <div class="treatment-icon">💡</div>
+          <div class="treatment-content">
+            <h4>Recommended Action</h4>
+            <p>{{ treatment }}</p>
+          </div>
+        </div>
+        {% endif %}
+        
       </div>
       
       <div class="result-image-wrapper">

@@ -23,8 +23,8 @@ else:
     class_labels = {
         0: "Bacterial Leaf Blight",
         1: "Brown Spot",
-        2: "Healthy",
-        3: "Leaf Smut"
+        2: "Healthy Rice Leaf",
+        3: "Rice Hispa"
     }
     print("Using default class labels (alphabetical)")
 

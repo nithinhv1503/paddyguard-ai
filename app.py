@@ -24,13 +24,22 @@ def predict():
         filepath = os.path.join(app.config["UPLOAD_FOLDER"], file.filename)
         file.save(filepath)
 
+        TREATMENTS = {
+            "Bacterial Leaf Blight": "Use copper-based fungicides immediately. Drain the field to reduce humidity, and avoid excessive nitrogen fertilizers which can worsen the disease.",
+            "Brown Spot": "Apply appropriate fungicides like Propiconazole. Ensure proper soil fertility with balanced potassium and phosphorus levels.",
+            "Rice Hispa": "Manually remove and destroy infested leaves. For severe infestations, consult a local expert for recommended contact insecticides.",
+            "Healthy Rice Leaf": "Your crop looks excellent! Continue standard fertilizing and watering routines to maintain good crop health."
+        }
+
         disease, confidence = predict_image(filepath)
+        treatment_info = TREATMENTS.get(disease, "Consult local agricultural experts for best practices.")
 
         return render_template(
             "upload.html",
             prediction=disease,
             confidence=round(confidence,2),
-            image_path=filepath
+            image_path=filepath,
+            treatment=treatment_info
         )
 
 if __name__ == "__main__":
