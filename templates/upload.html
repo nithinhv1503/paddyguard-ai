@@ -6,7 +6,6 @@
   <title>Detect Disease — PaddyGuard AI</title>
   <meta name="description" content="Upload a paddy leaf image to detect diseases using AI. Get instant results with confidence scores.">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -58,20 +57,37 @@
   <!-- Result -->
   {% if prediction %}
   <div class="result-card" id="result-card">
-    <h3>🩺 {{ prediction }}</h3>
-    <p class="confidence">Confidence: <strong>{{ confidence }}%</strong></p>
-    <img src="{{ image_path }}" alt="Uploaded leaf image">
+    <div class="result-card-inner">
+      <div class="result-info">
+        <span class="result-badge">Analysis Complete ✨</span>
+        <h3 class="disease-name">🩺 {{ prediction }}</h3>
+        
+        <div class="confidence-wrapper">
+          <div class="confidence-header">
+            <span>Confidence Level</span>
+            <strong class="confidence-val">{{ confidence }}%</strong>
+          </div>
+          <div class="confidence-track">
+            <div class="confidence-fill" style="width: {{ confidence }}%;"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="result-image-wrapper">
+        <img src="{{ image_path }}" alt="Uploaded leaf image" class="final-leaf-image">
+      </div>
+    </div>
   </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const resultCard = document.getElementById("result-card");
+      if (resultCard) {
+        resultCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  </script>
   {% endif %}
 
-</div>
-
-<!-- Model Accuracy Chart -->
-<div class="chart-section">
-  <h2>📊 Model Training Accuracy</h2>
-  <div class="chart-wrap">
-    <canvas id="accuracyChart"></canvas>
-  </div>
 </div>
 
 <!-- Footer -->
@@ -119,52 +135,6 @@ dropArea.addEventListener('drop', e => {
   document.getElementById('fileElem').files = files;
   if (files[0]) {
     document.getElementById('fileName').textContent = '📄 ' + files[0].name;
-  }
-});
-
-// Chart.js — Model Accuracy
-const ctx = document.getElementById('accuracyChart').getContext('2d');
-const gradient = ctx.createLinearGradient(0, 0, 0, 300);
-gradient.addColorStop(0, 'rgba(74,222,128,0.3)');
-gradient.addColorStop(1, 'rgba(74,222,128,0.01)');
-
-new Chart(ctx, {
-  type: 'line',
-  data: {
-    labels: ['Epoch 1','Epoch 2','Epoch 3','Epoch 4','Epoch 5','Epoch 6','Epoch 7','Epoch 8','Epoch 9','Epoch 10'],
-    datasets: [{
-      label: 'Training Accuracy (%)',
-      data: [70, 75, 80, 85, 88, 90, 92, 93, 94, 95],
-      borderColor: '#4ade80',
-      backgroundColor: gradient,
-      borderWidth: 2.5,
-      pointBackgroundColor: '#4ade80',
-      pointBorderColor: '#0a1a0f',
-      pointBorderWidth: 2,
-      pointRadius: 5,
-      pointHoverRadius: 7,
-      fill: true,
-      tension: 0.4
-    }]
-  },
-  options: {
-    responsive: true,
-    plugins: {
-      legend: {
-        labels: { color: '#94a3b8', font: { family: 'Inter' } }
-      }
-    },
-    scales: {
-      x: {
-        ticks: { color: '#64748b', font: { family: 'Inter', size: 11 } },
-        grid: { color: 'rgba(255,255,255,0.04)' }
-      },
-      y: {
-        min: 60, max: 100,
-        ticks: { color: '#64748b', font: { family: 'Inter', size: 11 }, callback: v => v + '%' },
-        grid: { color: 'rgba(255,255,255,0.04)' }
-      }
-    }
   }
 });
 </script>
