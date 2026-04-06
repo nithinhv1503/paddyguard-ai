@@ -35,8 +35,9 @@ pip install -r requirements.txt
     1. Create a `dataset/` folder in the root directory. 
     2. Place your classification folders (e.g., `Bacterial Leaf Blight`, `Rice Hispa`) filled with images inside it.
     3. Run `python train_model.py` and wait for the epochs to finish. It will automatically generate `paddy_disease_model.h5` and `class_indices.json`.
-*   **If you already have the model:** 
-    Download `paddy_disease_model.h5` and place it directly into the root folder alongside `app.py`.
+*   **If you already have the dataset but not the model:** 
+    1. Download the `paddy_disease_model.h5` file from the [Releases Page](https://github.com/nithinhv1503/paddyguard-ai/releases/tag/v1.0.0) of this repository.
+    2. Place it securely into the root folder of this project alongside `app.py`.
 
 ### 5. Start the Web App
 Once the dependencies are installed and the model is in place, run the server:
